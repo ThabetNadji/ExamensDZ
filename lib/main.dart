@@ -10,6 +10,7 @@ import 'View/main/theme.dart';
 Future<void> main() async {
   // somethig went wrong here (test pull)
   // another test
+  // local repo to remote repo
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences.getInstance().then((prefs) {
