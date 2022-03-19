@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExamensDZ</string>
+    <string name="facebook_app_id">327709622618857</string>
+    <string name="fb_login_protocol_scheme">fb327709622618857</string>
+    <string name="facebook_client_token">812c951872631da88d1446de4b2e657d</string>
+</resources>
