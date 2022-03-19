@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'View/main/theme.dart';
 
 Future<void> main() async {
+  // somethig went wrong here (test pull)
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences.getInstance().then((prefs) {
