@@ -7,6 +7,7 @@ import 'package:myEduApp/Services/courseNameConvertisor.dart';
 
 // ignore: camel_case_types
 class quizServices {
+  // some code here
   String publicUrl = 'https://heroku-quizapi.herokuapp.com/'; // heroku deployed address
   //String publicUrl = 'http://172.20.10.3:8080/'; // localhost address
   String dash = '/';
