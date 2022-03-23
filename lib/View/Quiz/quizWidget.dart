@@ -87,8 +87,8 @@ class _quizWidgetState extends State<quizWidget> {
                     SizedBox(
                       height: 25,
                     ),
+                    // page Indicator container
                     Container(
-                      // page Indicator container
                       child: Column(
                         children: [
                           CirclePageIndicator(
@@ -120,24 +120,29 @@ class _quizWidgetState extends State<quizWidget> {
                           ),
                         ],
                       ),
-                      child: Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: Colors.orange,
-                            width: 1,
+                      child: SingleChildScrollView(
+                        //scrollDirection: Axis.horizontal,
+                        scrollDirection: Axis.vertical,
+                        child: Container(
+                          padding: const EdgeInsets.all(4.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Colors.orange,
+                              width: 1,
+                            ),
                           ),
-                        ),
-                        child: Center(
-                          child: Text(widget.listQuiz[0].questionText,
-                              textAlign: TextAlign.center,
-                              style: new TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.025,
-                                  color: Colors.white,
-                                  fontFamily: 'Kufi',
-                                  fontWeight: FontWeight.bold)),
+                          child: Center(
+                            child: Text(widget.listQuiz[0].questionText,
+                                textAlign: TextAlign.center,
+                                style: new TextStyle(
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.025,
+                                    color: Colors.white,
+                                    fontFamily: 'Kufi',
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ),
                       ),
                     ),
