@@ -229,7 +229,7 @@ class _quizTrimesterState extends State<quizTrimester> {
                         } else {
                           return Center(
                             child: Text(
-                                ' ... لا يوجد اختبارات في هذا القسم بعد ،سيتم إضافتها قريبا  ',
+                                ' ... لا يوجد اختبارات في هذا الفصل بعد ،سيتم إضافتها قريبا جدا ',
                                 textAlign: TextAlign.center,
                                 style: new TextStyle(
                                     fontSize: 12.0,
