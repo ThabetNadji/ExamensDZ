@@ -94,7 +94,7 @@ class _quizTrimesterState extends State<quizTrimester> {
                                     content: Container(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.25,
+                                              0.40,
                                       //color: Colors,
                                       child: Column(
                                         crossAxisAlignment:
@@ -124,7 +124,7 @@ class _quizTrimesterState extends State<quizTrimester> {
                                                   fontFamily: 'Kufi',
                                                   fontWeight: FontWeight.bold)),
                                           Text(
-                                              'من بين الأربعة أجوبة المقترحة لكل سؤال توجد إجابة واحدة فقط صحيحة',
+                                              'من بين الأربعة أجوبة المقترحة لكل سؤال, توجد إجابة واحدة فقط صحيحة',
                                               textDirection: TextDirection.rtl,
                                               style: new TextStyle(
                                                   fontSize:
