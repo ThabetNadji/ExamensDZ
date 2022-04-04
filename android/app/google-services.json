@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "207003889011-vnmorcdl5vhm00sa1t9holf3821c9ofi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Moyenne.ExamensDZ",
+            "certificate_hash": "207e867271dbb48bf11d26f13f8d3470df52a9f8"
+          }
+        },
+        {
           "client_id": "207003889011-pe423vg05n02p93c9o4hmq53a5v4n20q.apps.googleusercontent.com",
           "client_type": 3
         }

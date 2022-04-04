@@ -62,7 +62,7 @@ class _LoggedInPageState extends State<LoggedInPage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.leaderboard),
-          label: 'Classement',
+          label: 'Statiscitque',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle),

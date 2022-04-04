@@ -111,7 +111,31 @@ class _quizTrimesterState extends State<quizTrimester> {
                                                   //color: Colors.green,
                                                   fontFamily: 'Kufi',
                                                   fontWeight: FontWeight.bold)),
-                                          Text('كل إجابة صحيحة تحسب +2 نقطة ',
+                                          Text(
+                                              'كل سؤال لديه أربعة أجوبة مقترحة',
+                                              textDirection: TextDirection.rtl,
+                                              style: new TextStyle(
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.012,
+                                                  //color: Colors.green,
+                                                  fontFamily: 'Kufi',
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(
+                                              'من بين الأربعة أجوبة المقترحة لكل سؤال توجد إجابة واحدة فقط صحيحة',
+                                              textDirection: TextDirection.rtl,
+                                              style: new TextStyle(
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.012,
+                                                  //color: Colors.green,
+                                                  fontFamily: 'Kufi',
+                                                  fontWeight: FontWeight.bold)),
+                                          Text('كل إجابة صحيحة تحسب 2+ نقطة ',
                                               textDirection: TextDirection.rtl,
                                               style: new TextStyle(
                                                   fontSize:
@@ -122,7 +146,7 @@ class _quizTrimesterState extends State<quizTrimester> {
                                                   color: Colors.green,
                                                   fontFamily: 'Kufi',
                                                   fontWeight: FontWeight.bold)),
-                                          Text('كل اجابة خاطئة تحتسب -1 نقطة',
+                                          Text('كل اجابة خاطئة تحتسب 1- نقطة',
                                               textDirection: TextDirection.rtl,
                                               style: new TextStyle(
                                                   fontSize:

@@ -217,7 +217,7 @@ class _quizWidgetState extends State<quizWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                          child: Text(' الخروج من الإختبار',
+                          child: Text('_',
                               style: new TextStyle(
                                   fontSize: 11.0,
                                   color: Colors.orange,
