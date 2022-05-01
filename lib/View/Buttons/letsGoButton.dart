@@ -19,7 +19,7 @@ class letsGoButton extends StatelessWidget {
   quizServices quizeServe = new quizServices();
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
         child: Container(
           child: Row(
             children: [
@@ -32,7 +32,10 @@ class letsGoButton extends StatelessWidget {
             ],
           ),
         ),
-        color: Colors.green,
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 22, 133, 66),
+          onPrimary: const Color(0xFF63d471),
+        ),
         onPressed: () {
           userGlobal.setExamName(courseName);
           userGlobal.setTrimester(trim);

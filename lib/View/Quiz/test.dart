@@ -1,9 +1,11 @@
 // ignore: camel_case_types
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Model/users.dart';
 import 'package:myEduApp/Services/quizServices.dart';
 import 'package:myEduApp/View/main/NetworkCheck.dart';
+import '../ad_helper/ad_helper.dart';
 import 'GoogleSingInApi.dart';
 import 'LoggedInPage.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -19,6 +21,17 @@ class test extends StatefulWidget {
 
 // ignore: camel_case_types
 class login_pageWidgetState extends State<test> {
+  // set ads
+  @override
+  void initState() {
+    // TODO: implement initState
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
   NetworkCheck networkChecker = new NetworkCheck();
   String emailToCheck;
   quizServices _quizServices = new quizServices();
@@ -28,7 +41,12 @@ class login_pageWidgetState extends State<test> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('quiz'),
+          title: Text('quizGame'),
+        ),
+        bottomNavigationBar: Container(
+          height: 50,
+          color: Colors.black38,
+          child: adWidget,
         ),
         body: Container(
           alignment: Alignment.topCenter,
@@ -57,7 +75,7 @@ class login_pageWidgetState extends State<test> {
                   children: [
                     Center(
                         child: Text(
-                            ' مرحبا ،قم بتسجيل الدخول باستخدام حسابك  غوغل أو فيسبوك',
+                            ' مرحبا ،قم بتسجيل الدخول باستخدام حسابك غوغل أو فيسبوك',
                             textAlign: TextAlign.center,
                             style: new TextStyle(
                               fontWeight: FontWeight.bold,

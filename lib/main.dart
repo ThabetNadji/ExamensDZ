@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'View/main/theme.dart';
 
 Future<void> main() async {
- 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences.getInstance().then((prefs) {
@@ -35,7 +34,7 @@ class MyEduApp extends StatefulWidget {
 class _MyEduAppState extends State<MyEduApp> {
   @override
   Widget build(BuildContext context) {
-    Widget testWidget = new MediaQuery(
+    Widget mainWidget = new MediaQuery(
         data: new MediaQueryData(),
         child: Consumer<ThemeProvider>(
           builder: (context, value, child) {
@@ -52,6 +51,6 @@ class _MyEduAppState extends State<MyEduApp> {
             );
           },
         ));
-    return testWidget;
+    return mainWidget;
   }
 }

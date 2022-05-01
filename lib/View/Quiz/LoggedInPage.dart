@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Model/users.dart';
 import 'package:myEduApp/View/Quiz/MyProfile.dart';
 import 'package:myEduApp/View/Quiz/quizHome.dart';
 import 'package:myEduApp/View/Quiz/statistic.dart';
+
+import '../ad_helper/ad_helper.dart';
 
 // ignore: must_be_immutable
 class LoggedInPage extends StatefulWidget {
@@ -18,6 +21,17 @@ class LoggedInPage extends StatefulWidget {
 }
 
 class _LoggedInPageState extends State<LoggedInPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
+
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

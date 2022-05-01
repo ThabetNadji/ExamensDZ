@@ -19,9 +19,11 @@ class quizButton extends StatelessWidget {
       margin: EdgeInsets.all(8),
       width: MediaQuery.of(context).size.width * 0.37, //130,
       height: MediaQuery.of(context).size.height * 0.45, //45,
-      child: RaisedButton.icon(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 22, 133, 66),
+          onPrimary: const Color(0xFF63d471),
+        ),
         label: Text(
           courseName,
           style: TextStyle(
@@ -34,9 +36,6 @@ class quizButton extends StatelessWidget {
           icon,
           color: Colors.white,
         ),
-        textColor: Colors.white,
-        splashColor: Colors.red,
-        color: const Color(0xFF166D3B),
         onPressed: () {
           if (trim == "trims") {
             showAlertDialog(context);

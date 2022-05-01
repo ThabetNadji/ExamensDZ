@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Services/courseNameConvertisor.dart';
 import 'package:myEduApp/Services/quizServices.dart';
 import 'package:myEduApp/View/Quiz/resultWidget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import '../ad_helper/ad_helper.dart';
 import 'getNote.dart';
 import 'userGlobal.dart' as userGlobal;
 
-class showResultWidget extends StatelessWidget {
+class showResultWidget extends StatefulWidget {
   List<resultWidget> _resultWidget;
   int scoreExam;
 
@@ -15,6 +17,23 @@ class showResultWidget extends StatelessWidget {
     _resultWidget = listResult;
     scoreExam = _score;
   }
+
+  @override
+  State<showResultWidget> createState() => _showResultWidgetState();
+}
+
+class _showResultWidgetState extends State<showResultWidget> {
+  // set ads
+  @override
+  void initState() {
+    // TODO: implement initState
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
   @override
   Widget build(BuildContext context) {
     // exam end -> do the necessary => show the result and score ,  setScoreGlobale and setExam to the db
@@ -23,7 +42,7 @@ class showResultWidget extends StatelessWidget {
     //1- set ExamScore and scoreGlobale and save exam schema to database
 
     // getScoreGlobal
-    int scoreGlobal = scoreExam + userGlobal.getUserInfo().getScore();
+    int scoreGlobal = widget.scoreExam + userGlobal.getUserInfo().getScore();
     // save scoreGlobal in userGlobal for the 3re case if user dont logout
     userGlobal.getUserInfo().setScore(scoreGlobal);
     //upDate score in fb (userID and scoreGlobal)
@@ -43,13 +62,13 @@ class showResultWidget extends StatelessWidget {
       String _examSchema =
           _season + '.' + courseName + '.' + trim + '.' + examNum;
       //Save Exam
-      quizService.saveExam(userID, _examSchema, scoreExam);
+      quizService.saveExam(userID, _examSchema, widget.scoreExam);
     });
 
     //2- show result widget
     getNote _getNote = new getNote();
     // ignore: non_constant_identifier_names
-    String getNote_ = _getNote.getNoteResult(scoreExam);
+    String getNote_ = _getNote.getNoteResult(widget.scoreExam);
     print('showResultWidget ...');
     return Scaffold(
       appBar: AppBar(
@@ -57,10 +76,15 @@ class showResultWidget extends StatelessWidget {
         title: Text('النتيـجـة',
             style: new TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20.0,
+              fontSize: MediaQuery.of(context).size.height * 0.02,
               //color: Colors.orange,
               fontFamily: 'Kufi',
             )),
+      ),
+      bottomNavigationBar: Container(
+        height: 50,
+        color: Colors.black38,
+        child: adWidget,
       ),
       body: SingleChildScrollView(
           child: Stack(
@@ -86,19 +110,19 @@ class showResultWidget extends StatelessWidget {
                     ),
                   ),
                   //Spacer(),
-                  scoreExam >= 0
+                  widget.scoreExam >= 0
                       ? CircularPercentIndicator(
-                          radius: MediaQuery.of(context).size.height * 0.15,
-                          lineWidth: 7.0,
-                          percent: (scoreExam) / 20,
-                          center: new Text(scoreExam.toString() + '/20',
+                          radius: MediaQuery.of(context).size.height * 0.10,
+                          lineWidth: 4.0,
+                          percent: (widget.scoreExam) / 20,
+                          center: new Text(widget.scoreExam.toString() + '/20',
                               style: TextStyle(
                                   fontFamily: 'Kufi',
                                   fontSize:
                                       MediaQuery.of(context).size.height * 0.04,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
-                          progressColor: scoreExam >= 10
+                          progressColor: widget.scoreExam >= 10
                               ? Colors.green[800]
                               : Colors.orange,
                         )
@@ -108,7 +132,7 @@ class showResultWidget extends StatelessWidget {
                               style: new TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                    MediaQuery.of(context).size.height * 0.04,
+                                    MediaQuery.of(context).size.height * 0.02,
                                 //color: Colors.orange,
                                 fontFamily: 'Kufi',
                               )),
@@ -155,7 +179,7 @@ class showResultWidget extends StatelessWidget {
                   ]),
               Column(
                 children: List.from(
-                  _resultWidget.map(
+                  widget._resultWidget.map(
                     (result) => Table(
                         border: TableBorder(
                           bottom: BorderSide(color: Colors.black45, width: 1),

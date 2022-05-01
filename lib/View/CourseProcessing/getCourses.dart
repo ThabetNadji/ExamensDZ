@@ -286,7 +286,7 @@ class GetCoursesState extends State<GetCourses> {
                                       fontWeight: FontWeight.bold,
                                       color: Colors.green,
                                       fontSize: 14)),
-                          leading: FlatButton.icon(
+                          leading: TextButton.icon(
                             label: Text('حذف',
                                 style: TextStyle(
                                     fontFamily: 'Kufi',

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/CourseProcessing/getCourses.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
+
+import '../ad_helper/ad_helper.dart';
 
 // ignore: must_be_immutable
 class showCoursesEnd extends StatefulWidget {
@@ -20,8 +23,12 @@ class _ShowCoursesState extends State<showCoursesEnd>
   @override
   void initState() {
     //_tabController = TabController(length: 4, vsync: this);
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
     super.initState();
   }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +93,11 @@ class _ShowCoursesState extends State<showCoursesEnd>
                         ),
                 ), // green
               ),
+              bottomNavigationBar: Container(
+                height: 50,
+                color: Colors.black38,
+                child: adWidget,
+              ),
               body: Center(
                 child: Wrap(
                   children: [
@@ -101,18 +113,14 @@ class _ShowCoursesState extends State<showCoursesEnd>
                                 fontFamily: 'Kufi',
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
-                        widget.sp != ''
-                            ? Text(' الشعبة : ' + widget.sp,
-                                style: TextStyle(
-                                    fontFamily: 'Kufi',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold))
-                            : Text(''),
                         Text(' الموسم الدراسي : ' + widget.yearX,
                             style: TextStyle(
                                 fontFamily: 'Kufi',
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: 20, //Use of SizedBox
+                        ),
                         GetCourses(widget.courseName, widget.years, '', '',
                             widget.sp, widget.yearX),
                         SizedBox(

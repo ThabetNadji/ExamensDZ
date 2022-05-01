@@ -60,7 +60,11 @@ class _quizMainWidgetState extends State<quizMainLight> {
               alignment: Alignment.bottomRight,
               child: Container(
                 // ignore: deprecated_member_use
-                child: RaisedButton(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 22, 133, 66),
+                    onPrimary: const Color(0xFF63d471),
+                  ),
                   onPressed: () {
                     //login_page login_page_ = new login_page();
                     test t = new test();
@@ -69,9 +73,6 @@ class _quizMainWidgetState extends State<quizMainLight> {
                         MaterialPageRoute(
                             builder: (BuildContext context) => t));
                   },
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.green, width: 1)),
-                  padding: EdgeInsets.all(1.0),
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(

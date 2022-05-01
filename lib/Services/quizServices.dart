@@ -50,7 +50,8 @@ class quizServices {
     String trimConv = convert.convTrim(_trim);
     String getQuestionUrl =
         '$publicUrl$_getQuestionUrl$courseNameConv$dash$trimConv$dash$examNum$dash$questionNum';
-    var resp = await http.get(getQuestionUrl); //  1
+    final Uri urlGetQuestionUrl = Uri.parse(getQuestionUrl);
+    var resp = await http.get(urlGetQuestionUrl); //  1
     if (resp.statusCode == 200) {
       String body = utf8.decode(resp.bodyBytes);
       _question.setQuestion(jsonDecode(body));
@@ -72,7 +73,8 @@ class quizServices {
 
     String getListQuestionUrl =
         '$publicUrl$_getListQuestion$courseNameConv$dash$trimConv$dash$examNum';
-    var resp = await http.get(getListQuestionUrl);
+    final Uri urlGetQuestionUrl = Uri.parse(getListQuestionUrl);
+    var resp = await http.get(urlGetQuestionUrl);
 
     if (resp.statusCode == 200) {
       String body = utf8.decode(resp.bodyBytes);
@@ -87,7 +89,8 @@ class quizServices {
     String uerIsExist = 'userIsExist/';
     // String isExist = 'false';
     String getUserIsExist = '$publicUrl$uerIsExist$userID';
-    var resp = await http.get(getUserIsExist);
+    final Uri urlGetQuestionUrl = Uri.parse(getUserIsExist);
+    var resp = await http.get(urlGetQuestionUrl);
     String body = utf8.decode(resp.bodyBytes);
     //var jsonData = jsonDecode(body);
     users us = new users();
@@ -99,7 +102,8 @@ class quizServices {
     print('add new user process');
     String saveUser = 'addUser/';
     String addUser = '$publicUrl$saveUser$userID$dash$userName';
-    http.post(addUser);
+    final Uri urlGetQuestionUrl = Uri.parse(addUser);
+    http.post(urlGetQuestionUrl);
     print('user added successfully');
   }
 
@@ -107,7 +111,8 @@ class quizServices {
     print('update score global');
     String _updateScore = 'upDateScore/';
     String upDateScoreUrl = '$publicUrl$_updateScore$userID$dash$score';
-    http.post(upDateScoreUrl);
+    final Uri urlUpDateScoreUrl = Uri.parse(upDateScoreUrl);
+    http.post(urlUpDateScoreUrl);
     print('score update successfully');
   }
 
@@ -116,7 +121,8 @@ class quizServices {
     String saveExam = 'saveExam/';
     String saveExamUr = '$publicUrl$saveExam$userID$dash$examSchema$dash$score';
     print('odlUrl' + saveExamUr);
-    http.post(saveExamUr);
+    final Uri urlSaveExamUr = Uri.parse(saveExamUr);
+    http.post(urlSaveExamUr);
     String newUrl = saveExamUr.replaceAll('.', '/');
     print('newUrl' + newUrl);
     print('exam saved successfully');
@@ -126,7 +132,8 @@ class quizServices {
     print('getSeason ...');
     String getSeason = 'getSeason/';
     String getSeasonUrl = '$publicUrl$getSeason';
-    var resp = await http.get(getSeasonUrl);
+    final Uri urlGetSeasonUrl = Uri.parse(getSeasonUrl);
+    var resp = await http.get(urlGetSeasonUrl);
     var jsonData = jsonDecode(resp.body);
     return jsonData;
   }
@@ -136,7 +143,8 @@ class quizServices {
     String examIsExist = 'examIsExist/';
     String _examIsExist = '$publicUrl$examIsExist$userID$dash$schema';
     print('exam Is Exist ? ' + _examIsExist);
-    var resp = await http.get(_examIsExist);
+    final Uri urlExamIsExist = Uri.parse(_examIsExist);
+    var resp = await http.get(urlExamIsExist);
     var jsonData = jsonDecode(resp.body);
     return jsonData;
   }

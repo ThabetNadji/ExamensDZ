@@ -32,7 +32,7 @@ def keystoreProperties = new Properties()
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -50,6 +50,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+        manifestPlaceholders += [someKey: "@string/some_value"]
     }
 
     signingConfigs {
@@ -71,8 +72,8 @@ android {
     buildTypes {
        release {
            signingConfig signingConfigs.release
-           shrinkResources true
-           minifyEnabled true
+           shrinkResources false
+           minifyEnabled false
            
        }
        debug{
@@ -89,6 +90,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    implementation 'com.google.ads.mediation:applovin:11.3.3.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

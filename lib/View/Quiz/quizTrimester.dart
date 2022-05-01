@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Services/quizServices.dart';
 import 'package:myEduApp/View/Quiz/trimesterWidget.dart';
+import '../ad_helper/ad_helper.dart';
 import 'userGlobal.dart' as userGlobal;
 
 // ignore: must_be_immutable
@@ -16,6 +18,16 @@ class quizTrimester extends StatefulWidget {
 }
 
 class _quizTrimesterState extends State<quizTrimester> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    AdHelper.disposeAd();
+    AdHelper.myBanner.load();
+    super.initState();
+  }
+
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+  // and set ads
   quizServices quizeServe = new quizServices();
 
   @override
@@ -37,6 +49,11 @@ class _quizTrimesterState extends State<quizTrimester> {
               style: TextStyle(
                   color: Colors.white,
                   fontSize: MediaQuery.of(context).size.height * 0.025)),
+        ),
+        bottomNavigationBar: Container(
+          height: 50,
+          color: Colors.black38,
+          child: adWidget,
         ),
         body: SingleChildScrollView(
           child: Stack(

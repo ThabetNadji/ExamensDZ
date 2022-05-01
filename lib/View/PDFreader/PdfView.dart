@@ -24,7 +24,7 @@ class _PdfViewState extends State<PdfView> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.green,
-        timeInSecForIos: 2,
+        // timeInSecForIos: 2,
         //timeInSecForIosWeb: 2,
         textColor: Colors.white,
         fontSize: 16.0);

@@ -129,7 +129,7 @@ class MyViewModel extends ChangeNotifier {
             ' نعتذر، خاصية حفظ ملفات شهادة التعليم المتوسط غير متوفره الآن ،سيتم إضافتها في الإصدارات القادمة ',
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
-        timeInSecForIos: 4,
+        //timeInSecForIos: 4,
         //timeInSecForIosWeb: 4,
         backgroundColor: Colors.red,
         textColor: Colors.white,

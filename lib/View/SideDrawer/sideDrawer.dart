@@ -16,7 +16,7 @@ class SideDrawer extends StatelessWidget {
         msg: 'إنتظرونا قربيا',
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        timeInSecForIos: 2,
+        //timeInSecForIos: 2,
         //timeInSecForIosWeb: 2,
         backgroundColor: Colors.green,
         textColor: Colors.white,
@@ -93,7 +93,7 @@ class SideDrawer extends StatelessWidget {
                 color: Colors.green, borderRadius: BorderRadius.circular(5)),
             child: Row(
               children: [
-                FlatButton.icon(
+                TextButton.icon(
                     onPressed: () => _launchURL(
                         'https://play.google.com/store/apps/details?id=com.Secondaire.ExamensDZ'),
                     icon: Icon(
@@ -121,7 +121,7 @@ class SideDrawer extends StatelessWidget {
                 color: Colors.green, borderRadius: BorderRadius.circular(5)),
             child: Row(
               children: [
-                FlatButton.icon(
+                TextButton.icon(
                     onPressed: () => _launchURL(
                         'https://play.google.com/store/apps/details?id=com.Premaire.ExamensDZ'),
                     icon: Icon(
