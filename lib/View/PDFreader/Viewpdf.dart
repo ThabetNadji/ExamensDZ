@@ -1,12 +1,19 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:myEduApp/View/PDFreader/quotation.dart';
+//import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/main/MyViewModel.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
+//import '../ad_helper/interstitialAds.dart';
+import '../ad_helper/ad_helper.dart';
+import '../ad_helper/interstitialAds.dart';
 import 'PdfView.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 // ignore: must_be_immutable
 class Viewpdf extends StatefulWidget {
@@ -25,20 +32,50 @@ class Viewpdf extends StatefulWidget {
 }
 
 class _ViewpdfState extends State<Viewpdf> {
-  //PDFDocument document; //
-
+  BuildContext backContext;
+  interstitlaAds _interstitlaAds = interstitlaAds();
+  quotations _quotation = new quotations();
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
   @override
   void initState() {
+    print('-------------------_____________________)))))');
+    print('the context is ');
+    print(context);
+    BackButtonInterceptor.add(myInterceptor);
     var myViewModel = Provider.of<MyViewModel>(context, listen: false);
 
     widget.futureUrl.then((url) async {
       myViewModel.startDownloading(url);
     });
+    AdHelper.myBanner.dispose();
+    AdHelper.myBanner.load();
+
     super.initState();
   }
 
   @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
+    info.currentRoute(context);
+    print("BACK BUTTON1"); // Do some stuff.
+    Navigator.pop(context);
+    try {
+      _interstitlaAds.interstitialAd.show();
+    } catch (ex) {
+      print('ops...');
+      print('something went wrong, ads faild to load ...?');
+    }
+    return true;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    backContext = context;
+    AdWidget adWidget_ = AdWidget(ad: AdHelper.myBanner);
     String fullPathFile;
     String link;
     String link2;
@@ -73,8 +110,8 @@ class _ViewpdfState extends State<Viewpdf> {
         print(e);
       }
     }
-    print('________________ tri =');
-    print(widget.tri);
+    var random = Random();
+    int randomIndex = random.nextInt(20);
     var myViewModel = Provider.of<MyViewModel>(context, listen: false);
     return Consumer<ThemeProvider>(builder: (context, value, child) {
       return MaterialApp(
@@ -97,6 +134,12 @@ class _ViewpdfState extends State<Viewpdf> {
                               MediaQuery.of(context).size.height * 0.023)),
               leading: InkWell(
                 onTap: () {
+                  try {
+                    _interstitlaAds.interstitialAd.show();
+                  } catch (ex) {
+                    print('ops...');
+                    print('something weng wrong, ads faild to load ...?');
+                  }
                   Navigator.pop(context);
                 },
                 child: Icon(
@@ -192,6 +235,11 @@ class _ViewpdfState extends State<Viewpdf> {
                 )
               ],
             ),
+            /* bottomNavigationBar: Container(
+              height: 50,
+              color: Colors.black38,
+              child: adWidget,
+            ),*/
             body: new Stack(
               children: <Widget>[
                 Center(
@@ -204,13 +252,31 @@ class _ViewpdfState extends State<Viewpdf> {
                           return Center(
                               child: Column(
                             children: [
-                              SizedBox(width: 60, height: 170),
-                              Column(
-                                children: [
-                                  CircularPercentIndicator(
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.30,
-                                    lineWidth: 10.0,
+                              SizedBox(width: 60, height: 70),
+                              Center(
+                                child: Text(
+                                  ' ... جاري تحضير الملف ',
+                                  style: TextStyle(
+                                    fontFamily: 'Kufi',
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.04,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 60, height: 15),
+                              Container(
+                                  child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: new LinearPercentIndicator(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.9,
+                                    lineHeight:
+                                        MediaQuery.of(context).size.width *
+                                            0.12,
+                                    //animationDuration: 2500,
                                     percent: (myViewModel
                                             .getDownloadProgress()
                                             .toDouble()) /
@@ -223,15 +289,42 @@ class _ViewpdfState extends State<Viewpdf> {
                                             '  ',
                                         style: TextStyle(
                                             fontFamily: 'Kufi',
-                                            fontSize: 30,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.06,
                                             fontWeight: FontWeight.bold,
                                             color: value.getTheme() ==
                                                     ThemeData.light().copyWith()
                                                 ? Colors.black
                                                 : Colors.white)),
+                                    barRadius: const Radius.circular(8),
+                                    //linearStrokeCap: LinearStrokeCap.round,
                                     progressColor: Colors.green[800],
-                                  )
-                                ],
+                                  ),
+                                ),
+                              )),
+                              SizedBox(width: 60, height: 30),
+                              Container(
+                                child: Center(
+                                  child: Text(
+                                      _quotation.getQutation(randomIndex),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: 'Kufi',
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.04,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green)),
+                                ),
+                              ),
+                              SizedBox(width: 60, height: 60),
+                              Container(
+                                height: 50,
+                                color: Colors.black38,
+                                child: adWidget,
                               )
                             ],
                           ));
@@ -240,8 +333,6 @@ class _ViewpdfState extends State<Viewpdf> {
                               myViewModel.getDownloadState() == true) {
                             myViewModel.setDownloadState(false);
                             return Container(
-                                // width: MediaQuery.of(context).size.width,
-                                // height: MediaQuery.of(context).size.height,
                                 child: PdfView(
                               path:
                                   '/storage/emulated/0/Android/data/com.Moyenne.ExamensDZ/files/myDownload.pdf',
@@ -260,5 +351,3 @@ class _ViewpdfState extends State<Viewpdf> {
     });
   }
 }
-
-/* Center(child: PDFViewer(document: document)) */

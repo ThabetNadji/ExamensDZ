@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myEduApp/Model/question.dart';
 import 'package:myEduApp/Model/userDetails.dart';
 import 'package:myEduApp/Model/users.dart';
 import 'package:myEduApp/Services/quizServices.dart';
 import 'package:myEduApp/View/Quiz/quizWidget.dart';
 import '../Quiz/userGlobal.dart' as userGlobal;
+import '../ad_helper/interstitialAds.dart';
 
 class letsGoButton extends StatelessWidget {
   String courseName, trim, examNum;
+  interstitlaAds _interstitlaAds = interstitlaAds();
   List<question> _listQuestion = new List<question>();
   letsGoButton(String c, String t, String e) {
     courseName = c;
@@ -43,6 +45,13 @@ class letsGoButton extends StatelessWidget {
           List<Map<String, dynamic>> listMap;
           // ignore: non_constant_identifier_names
           question question_;
+          try {
+            _interstitlaAds.interstitialAd.show();
+          } catch (ex) {
+            print('ops...');
+            print('something weng wrong, ads faild to load ...?');
+          }
+          //_interstitlaAds.interstitialAd.show();
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(

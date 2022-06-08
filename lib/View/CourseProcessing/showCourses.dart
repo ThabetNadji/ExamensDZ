@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../ad_helper/ad_helper.dart';
 import 'getCourses.dart';
 import 'package:myEduApp/View/main/MyViewModel.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 // ignore: must_be_immutable
 class ShowCourses extends StatefulWidget {
@@ -22,14 +23,37 @@ class _ShowCoursesState extends State<ShowCourses>
   TabController _tabController;
   List<GetCourses> getCoursesList;
 
+  BuildContext backContext;
+
   @override
   void initState() {
+    /*
+    BackButtonInterceptor.add(myInterceptor);
+    print('--------------------------------------');
+    print('showCourses context is ');
+    print(context);
+    print('--------------------------------------');
+    */
     _tabController = TabController(length: 4, vsync: this);
     super.initState();
     AdHelper.disposeAd();
     AdHelper.myBanner.load();
   }
 
+  /*
+  @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
+    info.currentRoute(context);
+    print("BACK BUTTON!"); // Do some stuff.
+    Navigator.pop(context);
+    return true;
+  }
+  */
   AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
 
   // ignore: unused_element
@@ -147,6 +171,7 @@ class _ShowCoursesState extends State<ShowCourses>
 
   @override
   Widget build(BuildContext context) {
+    backContext = context;
     NetworkCheck networkChecker = new NetworkCheck();
 
     devicesType _devicesType = new devicesType();

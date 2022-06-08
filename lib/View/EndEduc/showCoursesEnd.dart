@@ -3,8 +3,8 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/CourseProcessing/getCourses.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
-
 import '../ad_helper/ad_helper.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 // ignore: must_be_immutable
 class showCoursesEnd extends StatefulWidget {
@@ -19,13 +19,26 @@ class _ShowCoursesState extends State<showCoursesEnd>
     with SingleTickerProviderStateMixin {
   //TabController _tabController;
   List<showCoursesEnd> getCoursesList;
-
+  BuildContext backContext;
   @override
   void initState() {
     //_tabController = TabController(length: 4, vsync: this);
+    BackButtonInterceptor.add(myInterceptor);
     AdHelper.disposeAd();
     AdHelper.myBanner.load();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
+    print("BACK BUTTON 2"); // Do some stuff.
+    Navigator.pop(backContext);
+    return true;
   }
 
   AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
@@ -33,7 +46,7 @@ class _ShowCoursesState extends State<showCoursesEnd>
   @override
   Widget build(BuildContext context) {
     // to remove space beteween words of sp var
-
+    backContext = context;
     return Consumer<ThemeProvider>(builder: (context, value, child) {
       return MaterialApp(
           theme: value.getTheme(),

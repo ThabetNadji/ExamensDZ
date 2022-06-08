@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../PDFreader/Viewpdf.dart';
+import '../ad_helper/interstitialAds.dart';
 
 // ignore: must_be_immutable
 class CourseContentButtonMore extends StatelessWidget {
   Viewpdf viewpdf;
   String titleBtn;
+  interstitlaAds _interstitlaAds = interstitlaAds();
   CourseContentButtonMore(this.viewpdf, this.titleBtn);
 
   @override
@@ -25,6 +27,11 @@ class CourseContentButtonMore extends StatelessWidget {
           onPrimary: const Color(0xFF63d471),
         ),
         onPressed: () {
+          /*try {
+            _interstitlaAds.interstitialAd.show();
+          } catch (ex) {
+            print('ads failed to load ...');
+          }*/
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) => viewpdf));
         },
@@ -49,9 +56,6 @@ class CourseContentButtonMore extends StatelessWidget {
       SizedBox(
         height: 15,
       ),
-    ]
-        // ignore: deprecated_member_use
-
-        );
+    ]);
   }
 }

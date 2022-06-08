@@ -38,7 +38,7 @@ class _LoggedInPageState extends State<LoggedInPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("ExamensDZ Quiz Game",
+        title: Text("ExamensDZ QuizGame",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: MediaQuery.of(context).size.height * 0.025)),

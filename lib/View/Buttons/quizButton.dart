@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myEduApp/View/Quiz/quizTrimester.dart';
 
 class quizButton extends StatelessWidget {
   String courseName, trim;
   IconData icon;
+
   quizButton(course, _icon, _trim) {
     this.courseName = course;
     this.icon = _icon;

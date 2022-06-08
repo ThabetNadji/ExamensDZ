@@ -5,9 +5,10 @@ import 'package:provider/provider.dart';
 import '../Buttons/customButton.dart';
 import '../Buttons/customButtonEmpty.dart';
 import '../ad_helper/ad_helper.dart';
+import 'horizantalListView.dart';
 
 class ListCoursesPrimer extends StatefulWidget {
-  final String years, level;
+  String years, level;
   String yearX = 'noChanged';
   ListCoursesPrimer(this.years, this.level);
   @override
@@ -34,6 +35,7 @@ class _ListCoursesPrimerState extends State<ListCoursesPrimer> {
           theme: value.getTheme(),
           home: Scaffold(
             appBar: AppBar(
+              actions: <Widget>[],
               leading: InkWell(
                 onTap: () {
                   Navigator.pop(context);
@@ -231,8 +233,11 @@ class _ListCoursesPrimerState extends State<ListCoursesPrimer> {
                     ],
                   ),
                 ),
-                Spacer(),
-                Spacer(),
+                SizedBox(
+                  height: 2,
+                ),
+
+                //Spacer()
               ],
             ),
           ),

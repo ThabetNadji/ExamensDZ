@@ -41,7 +41,7 @@ class login_pageWidgetState extends State<test> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('quizGame'),
+          title: Text('QuizGame'),
         ),
         bottomNavigationBar: Container(
           height: 50,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'Controller/GetConroller.dart';
 import 'View/main/MyViewModel.dart';
 import 'View/main/myhomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,17 +36,19 @@ class MyEduApp extends StatefulWidget {
 class _MyEduAppState extends State<MyEduApp> {
   @override
   Widget build(BuildContext context) {
+    Get.put(GetController);
+
     Widget mainWidget = new MediaQuery(
         data: new MediaQueryData(),
         child: Consumer<ThemeProvider>(
           builder: (context, value, child) {
-            return new MaterialApp(
+            return new GetMaterialApp(
               theme: value.getTheme(),
               home: CustomSplash(
                 imagePath: "assets/images/myNewLogo5.png",
                 backGroundColor: Color(0xFF323232),
                 animationEffect: 'zoom-in',
-                home: MyHomePage(),
+                home: HomePage(),
                 duration: 3000,
                 type: CustomSplashType.StaticDuration,
               ),

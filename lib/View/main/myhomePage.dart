@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/Quiz/quizMain.dart';
 import 'package:myEduApp/View/Quiz/quizMainLight.dart';
 import 'package:myEduApp/View/main/theme.dart';
+import 'package:myEduApp/View/main/timeRemaing.dart';
 import 'package:provider/provider.dart';
+import '../../Controller/GetConroller.dart';
+import '../PrimerAndSecondray/horizantalListView.dart';
 import '../SideDrawer/sideDrawer.dart';
 import '../ad_helper/ad_helper.dart';
 import 'cardHomeWidget.dart';
 import 'cardHomeWidgetDark.dart';
-import 'package:intl/intl.dart';
-import 'dart:ui' as ui;
 
-// ignore: must_be_immutable
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int estimateTs = DateTime(2022, 06, 06, 00, 00, 00).millisecondsSinceEpoch;
+class HomePage extends StatelessWidget {
   // set needed date
 
-  // set ads
+  /*set ads
   @override
   void initState() {
     // TODO: implement initState
@@ -29,9 +24,8 @@ class _MyHomePageState extends State<MyHomePage> {
     AdHelper.myBanner.load();
     super.initState();
   }
+  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);*/
 
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
-  // and set ads
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, value, child) {
@@ -101,219 +95,49 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
               ),
             ),
-            bottomNavigationBar: Container(
-              height: 50,
-              color: Colors.black38,
-              child: adWidget,
-            ),
             body: SingleChildScrollView(
-              child: Stack(
+              child: Column(
                 children: [
+                  SizedBox(
+                    height: 10, //Use of SizedBox
+                  ),
+                  timeRemaining(),
+                  SizedBox(
+                    height: 10, //Use of SizedBox
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Divider(
+                          height: 10,
+                          endIndent: 50,
+                          indent: 50,
+                          color: Colors.white),
+                      Text(' حساب المعدلات ',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              fontFamily: 'Kufi',
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold)),
+                      Container(
+                        height: 120,
+                        child: ListView(
+                            physics: NeverScrollableScrollPhysics(),
+                            children: [horizantalListView()]),
+                      ),
+                    ],
+                  ),
                   Center(
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 30, //Use of SizedBox
+                          height: 15, //Use of SizedBox
                         ),
                         Container(
-                          //width: 400,
-                          //height: 673,
                           child: Column(
                             children: <Widget>[
-                              Column(
-                                children: [
-                                  Container(
-                                    //height: 30,
-                                    //width: 675,
-                                    decoration: BoxDecoration(
-                                        //color: Colors.green,
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Column(
-                                      children: [
-                                        StreamBuilder(
-                                            stream: Stream.periodic(
-                                                Duration(seconds: 1), (i) => i),
-                                            builder: (BuildContext context,
-                                                AsyncSnapshot<int> snapshot) {
-                                              DateFormat format =
-                                                  DateFormat("mm:ss");
-                                              int now = DateTime.now()
-                                                  .millisecondsSinceEpoch;
-                                              Duration remaining = Duration(
-                                                  milliseconds:
-                                                      estimateTs - now);
-                                              var dateString =
-                                                  '${remaining.inHours}:${format.format(DateTime.fromMillisecondsSinceEpoch(remaining.inMilliseconds))}';
-                                              var dayX = remaining.inHours / 24;
-                                              var min = remaining.inHours * 60;
-                                              var sec = min * 60;
-
-                                              double day;
-                                              if (dayX >= 0) {
-                                                day = dayX;
-                                              } else {
-                                                day = 0;
-                                                min = 0;
-                                                sec = 0;
-                                                dateString = '0';
-                                              }
-                                              //print(dateString);
-                                              return Container(
-                                                color: Colors.greenAccent
-                                                    .withOpacity(0.3),
-                                                alignment: Alignment.center,
-                                                child: Column(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Text(
-                                                            ' 2022 الـوقـت المـتـبـقـي لــشـهــادة التعليم المتوسط  ',
-                                                            style:
-                                                                new TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 10.0,
-                                                              //color: Colors.orange,
-                                                              fontFamily:
-                                                                  'Kufi',
-                                                            ))
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      children: [
-                                                        //remaining
-
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center, //Center Row contents horizontally,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center, //Center Row contents vertically,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                    '  يـــــوم  ',
-                                                                    style:
-                                                                        new TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      //color: Colors.orange,
-                                                                      fontFamily:
-                                                                          'Kufi',
-                                                                    ))
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center, //Center Row contents horizontally,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center, //Center Row contents vertically,
-                                                              children: [
-                                                                Text(
-                                                                    '- الوقت بالأيام :     ' +
-                                                                        '             ' +
-                                                                        day
-                                                                            .toInt()
-                                                                            .toString(),
-                                                                    textDirection: ui
-                                                                        .TextDirection
-                                                                        .rtl,
-                                                                    style:
-                                                                        new TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      //color: Colors.orange,
-                                                                      fontFamily:
-                                                                          'Kufi',
-                                                                    ))
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center, //Center Row contents horizontally,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center, //Center Row contents vertically,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                    'ســــــاعــة',
-                                                                    style:
-                                                                        new TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      //color: Colors.orange,
-                                                                      fontFamily:
-                                                                          'Kufi',
-                                                                    ))
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                    '- الوقت بالساعات :    ' +
-                                                                        dateString,
-                                                                    textDirection: ui
-                                                                        .TextDirection
-                                                                        .rtl,
-                                                                    style:
-                                                                        new TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      //color: Colors.orange,
-                                                                      fontFamily:
-                                                                          'Kufi',
-                                                                    ))
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Text(
-                                                            'بالتـــوفـيق لكــل مجـتهــد ',
-                                                            style:
-                                                                new TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 10.0,
-                                                              //color: Colors.orange,
-                                                              fontFamily:
-                                                                  'Kufi',
-                                                            ))
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              );
-                                            }),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
                               SizedBox(
-                                height: 30, //Use of SizedBox
+                                height: 2,
                               ),
                               Container(
                                 //height: MediaQuery.of(context).size.height * 0.380, //165, //235,
@@ -337,6 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ],
                                 ),
                               ),
+                              //nativeAds(),
                               Container(
                                 //width: 400,
                                 //height: 673,
@@ -350,18 +175,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                             'إبدء')
                                         : quizMain(
                                             'assets/images/quiz.png',
-                                            'حضر لشهادة التعليم المتوسط بطريقة مسلية و ممتعة مع  Quiz Game ',
+                                            'حضر لشهادة التعليم المتوسط بطريقة مسلية و ممتعة مع  QuizGame ',
                                             'إبدء'),
                                   ],
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.bottomCenter,
-                          child: Column(
-                            children: [],
                           ),
                         ),
                       ],

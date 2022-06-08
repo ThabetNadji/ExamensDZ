@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none' 
 
-version: 2.0.3+32
+version: 2.0.9+39
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -24,7 +24,7 @@ dependencies:
   day_night_theme_flutter: ^0.0.4
   provider: ^4.0.3
   shared_preferences: ^2.0.13
-  percent_indicator: ^4.0.0
+  percent_indicator: ^4.2.2
   http: ^0.13.4
   provider_architecture: ^1.0.6
   universal_html: ^2.0.8
@@ -38,6 +38,8 @@ dependencies:
   flutter_facebook_auth: ^4.2.1
   flutter_screenutil: ^5.4.0
   google_mobile_ads: ^1.2.0
+  back_button_interceptor: ^6.0.0
+  get: ^4.6.5
   
   
 

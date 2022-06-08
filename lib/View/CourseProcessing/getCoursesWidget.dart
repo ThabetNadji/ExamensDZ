@@ -107,7 +107,15 @@ class GetCoursesWidget {
       builder: (BuildContext context, snapshot) {
         if (!snapshot.hasData) {
           return new Column(
-            children: [Text('الملفات غير متوفره الآن ...')],
+            children: [
+              Text('... الملفات غير متوفره الآن',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Kufi',
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * 0.042,
+                      color: Colors.orange))
+            ],
           );
         } else {
           return Column(

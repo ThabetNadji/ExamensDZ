@@ -35,8 +35,6 @@ class _PdfViewState extends State<PdfView> {
     var myViewModel = Provider.of<MyViewModel>(context, listen: false);
     bool viewThemeX = myViewModel.getThemeView();
 
-    //print('get >>>>>>>>>>>>>>>>>>>>>>>>');
-    //print(widget.viewTheme.toString());
     return Scaffold(
       body: Stack(
         children: <Widget>[

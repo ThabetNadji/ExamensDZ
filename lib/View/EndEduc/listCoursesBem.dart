@@ -25,6 +25,7 @@ class _ListCoursesPrimerState extends State<listCoursesBem> {
   }
 
   AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+
   // and set ads
   List<String> bemYears = <String>[
     '2021',

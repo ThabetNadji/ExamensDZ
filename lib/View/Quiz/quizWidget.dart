@@ -107,6 +107,7 @@ class _quizWidgetState extends State<quizWidget> {
                     // question container
                     Container(
                       height: 105,
+                      //height: MediaQuery.of(context).size.height / 4,
                       decoration: new BoxDecoration(
                         borderRadius:
                             new BorderRadius.all(new Radius.circular(10.0)),
