@@ -6,12 +6,14 @@ import 'package:myEduApp/View/Quiz/quizMainLight.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:myEduApp/View/main/timeRemaing.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../Controller/GetConroller.dart';
 import '../PrimerAndSecondray/horizantalListView.dart';
 import '../SideDrawer/sideDrawer.dart';
-import '../ad_helper/ad_helper.dart';
+
 import 'cardHomeWidget.dart';
 import 'cardHomeWidgetDark.dart';
+import 'contactUs.dart';
 
 class HomePage extends StatelessWidget {
   // set needed date
@@ -28,6 +30,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    contactUs contactUS = new contactUs();
     return Consumer<ThemeProvider>(builder: (context, value, child) {
       return new MaterialApp(
           theme: value.getTheme(),
@@ -36,15 +39,23 @@ class HomePage extends StatelessWidget {
             appBar: AppBar(
               centerTitle: true,
               title: Text(
-                ' الـتـعـلـيـم الـمـتـوســــــط - Examens DZ ',
+                ' ExamensDZ AM ',
                 style: new TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.height * 0.015,
+                  fontSize: MediaQuery.of(context).size.height * 0.025,
                   color: Colors.orange,
                   fontFamily: 'Kufi',
                 ),
               ),
               actions: <Widget>[
+                InkWell(
+                    onTap: () => showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(content: contactUS);
+                        }),
+                    child: Icon(Icons.telegram,
+                        size: MediaQuery.of(context).size.width / 10)),
                 value.getTheme() == ThemeData.light().copyWith()
                     ? IconButton(
                         icon:

@@ -3,7 +3,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/CourseProcessing/getCourses.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
-import '../ad_helper/ad_helper.dart';
+
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 // ignore: must_be_immutable
@@ -24,8 +24,7 @@ class _ShowCoursesState extends State<showCoursesEnd>
   void initState() {
     //_tabController = TabController(length: 4, vsync: this);
     BackButtonInterceptor.add(myInterceptor);
-    AdHelper.disposeAd();
-    AdHelper.myBanner.load();
+
     super.initState();
   }
 
@@ -40,8 +39,6 @@ class _ShowCoursesState extends State<showCoursesEnd>
     Navigator.pop(backContext);
     return true;
   }
-
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
 
   @override
   Widget build(BuildContext context) {
@@ -105,11 +102,6 @@ class _ShowCoursesState extends State<showCoursesEnd>
                               BorderRadius.circular(0), //border corner radius
                         ),
                 ), // green
-              ),
-              bottomNavigationBar: Container(
-                height: 50,
-                color: Colors.black38,
-                child: adWidget,
               ),
               body: Center(
                 child: Wrap(

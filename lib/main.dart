@@ -1,3 +1,4 @@
+//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Controller/GetConroller.dart';
@@ -12,6 +13,8 @@ import 'View/main/theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // Pass all uncaught errors from the framework to Crashlytics.
+  //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   SharedPreferences.getInstance().then((prefs) {
     var isDarkTheme = prefs.getBool("darkTheme") ?? true;
     return runApp(MultiProvider(
@@ -43,6 +46,7 @@ class _MyEduAppState extends State<MyEduApp> {
         child: Consumer<ThemeProvider>(
           builder: (context, value, child) {
             return new GetMaterialApp(
+              debugShowCheckedModeBanner: false,
               theme: value.getTheme(),
               home: CustomSplash(
                 imagePath: "assets/images/myNewLogo5.png",

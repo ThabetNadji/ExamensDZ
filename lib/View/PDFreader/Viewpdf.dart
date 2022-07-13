@@ -10,7 +10,7 @@ import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 //import '../ad_helper/interstitialAds.dart';
-import '../ad_helper/ad_helper.dart';
+
 import '../ad_helper/interstitialAds.dart';
 import 'PdfView.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
@@ -35,7 +35,7 @@ class _ViewpdfState extends State<Viewpdf> {
   BuildContext backContext;
   interstitlaAds _interstitlaAds = interstitlaAds();
   quotations _quotation = new quotations();
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+
   @override
   void initState() {
     print('-------------------_____________________)))))');
@@ -47,8 +47,6 @@ class _ViewpdfState extends State<Viewpdf> {
     widget.futureUrl.then((url) async {
       myViewModel.startDownloading(url);
     });
-    AdHelper.myBanner.dispose();
-    AdHelper.myBanner.load();
 
     super.initState();
   }
@@ -75,7 +73,7 @@ class _ViewpdfState extends State<Viewpdf> {
   @override
   Widget build(BuildContext context) {
     backContext = context;
-    AdWidget adWidget_ = AdWidget(ad: AdHelper.myBanner);
+
     String fullPathFile;
     String link;
     String link2;
@@ -321,11 +319,6 @@ class _ViewpdfState extends State<Viewpdf> {
                                 ),
                               ),
                               SizedBox(width: 60, height: 60),
-                              Container(
-                                height: 50,
-                                color: Colors.black38,
-                                child: adWidget,
-                              )
                             ],
                           ));
                         } else {

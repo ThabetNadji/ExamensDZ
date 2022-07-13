@@ -4,7 +4,7 @@ import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
 import '../Buttons/customButton.dart';
 import '../Buttons/customButtonEmpty.dart';
-import '../ad_helper/ad_helper.dart';
+
 import 'horizantalListView.dart';
 
 class ListCoursesPrimer extends StatefulWidget {
@@ -20,12 +20,10 @@ class _ListCoursesPrimerState extends State<ListCoursesPrimer> {
   @override
   void initState() {
     // TODO: implement initState
-    AdHelper.disposeAd();
-    AdHelper.myBanner.load();
+
     super.initState();
   }
 
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
   // and set ads
   @override
   Widget build(BuildContext context) {
@@ -90,11 +88,6 @@ class _ListCoursesPrimerState extends State<ListCoursesPrimer> {
                             BorderRadius.circular(0), //border corner radius
                       ),
               ),
-            ),
-            bottomNavigationBar: Container(
-              height: 50,
-              color: Colors.black38,
-              child: adWidget,
             ),
             body: Column(
               children: <Widget>[

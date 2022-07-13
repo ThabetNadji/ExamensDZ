@@ -4,7 +4,7 @@ import 'package:myEduApp/View/main/NetworkCheck.dart';
 import 'package:myEduApp/View/main/devicesType.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
-import '../ad_helper/ad_helper.dart';
+
 import 'getCourses.dart';
 import 'package:myEduApp/View/main/MyViewModel.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
@@ -36,8 +36,6 @@ class _ShowCoursesState extends State<ShowCourses>
     */
     _tabController = TabController(length: 4, vsync: this);
     super.initState();
-    AdHelper.disposeAd();
-    AdHelper.myBanner.load();
   }
 
   /*
@@ -54,7 +52,6 @@ class _ShowCoursesState extends State<ShowCourses>
     return true;
   }
   */
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
 
   // ignore: unused_element
   void _showAlert(BuildContext context) {
@@ -289,11 +286,6 @@ class _ShowCoursesState extends State<ShowCourses>
                 controller: _tabController,
               ),
               bottomOpacity: 1,
-            ),
-            bottomNavigationBar: Container(
-              height: 50,
-              color: Colors.black38,
-              child: adWidget,
             ),
             body: TabBarView(
               children: <Widget>[

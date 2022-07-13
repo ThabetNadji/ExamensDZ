@@ -4,7 +4,6 @@ import 'package:myEduApp/View/main/devicesType.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';
 import '../Buttons/customButton.dart';
-import '../ad_helper/ad_helper.dart';
 
 class listCoursesBem extends StatefulWidget {
   final String years, level;
@@ -19,15 +18,13 @@ class _ListCoursesPrimerState extends State<listCoursesBem> {
   @override
   void initState() {
     // TODO: implement initState
-    AdHelper.disposeAd();
-    AdHelper.myBanner.load();
+
     super.initState();
   }
 
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
-
   // and set ads
   List<String> bemYears = <String>[
+    '2022',
     '2021',
     '2020',
     '2019',
@@ -103,11 +100,6 @@ class _ListCoursesPrimerState extends State<listCoursesBem> {
                           BorderRadius.circular(0), //border corner radius
                     ),
             ),
-          ),
-          bottomNavigationBar: Container(
-            height: 50,
-            color: Colors.black38,
-            child: adWidget,
           ),
           body: Column(
             children: <Widget>[

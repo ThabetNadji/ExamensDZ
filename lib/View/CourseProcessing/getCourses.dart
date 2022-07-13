@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:myEduApp/View/Buttons/CustomAlertDialog.dart';
 import 'package:myEduApp/View/Buttons/courseContentButtonOffLign.dart';
 import 'package:myEduApp/View/main/Myflushbar.dart';
 import 'package:myEduApp/View/main/NetworkCheck.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../Controller/GetExpan.dart';
 import 'getCoursesWidget.dart';
 
 // ignore: must_be_immutable
@@ -158,6 +160,7 @@ class GetCourses extends StatefulWidget {
 class GetCoursesState extends State<GetCourses> {
   @override
   void initState() {
+    Get.put(GetExpan());
     networkCheck.isInternet().then((internetState) {
       if (internetState == 'false') {
         getFiles(); //call getFiles() function on initial state.

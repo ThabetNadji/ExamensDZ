@@ -5,7 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Controller/GetConroller.dart';
 import '../../Services/averageCalculator.dart';
 import '../../Services/textFieldConvertur.dart';
-import '../ad_helper/ad_helper.dart';
+
 import '../ad_helper/interstitialAds.dart';
 import 'tableRow1.dart';
 
@@ -28,7 +28,7 @@ class bemAverage extends GetView<GetController> {
 
   Widget build(BuildContext context) {
     averageCalculator _averageCalculator = new averageCalculator();
-    final GetController _getController = Get.find();
+    //final GetController _getController = Get.find();
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
@@ -269,7 +269,7 @@ class bemAverage extends GetView<GetController> {
                       tableRowThree('5'),
                     ]),
                     TableRow(children: <Widget>[
-                      tableRowOne('  رياضايت  ', Icons.calculate),
+                      tableRowOne('  رياضيات  ', Icons.calculate),
                       TextFormField(
                         inputFormatters: [
                           CustomRangeTextInputFormatter(),

@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/Services/averageCalculator.dart';
 
-import '../ad_helper/ad_helper.dart';
 import '../ad_helper/interstitialAds.dart';
 
 class secondairAverage extends StatefulWidget {
@@ -14,12 +13,11 @@ class secondairAverage extends StatefulWidget {
 
 class _secondairAverageState extends State<secondairAverage> {
   interstitlaAds _interstitlaAds = interstitlaAds();
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
+
   @override
   void initState() {
     BackButtonInterceptor.add(myInterceptor);
-    AdHelper.myBanner.dispose();
-    AdHelper.myBanner.load();
+
     super.initState();
   }
 
@@ -52,7 +50,6 @@ class _secondairAverageState extends State<secondairAverage> {
 
   @override
   Widget build(BuildContext context) {
-    AdWidget adWidget_ = AdWidget(ad: AdHelper.myBanner);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -77,11 +74,6 @@ class _secondairAverageState extends State<secondairAverage> {
             color: Colors.white,
           ),
         ),
-      ),
-      bottomNavigationBar: Container(
-        height: 50,
-        color: Colors.black38,
-        child: adWidget_,
       ),
       body: SingleChildScrollView(
           child: Container(
@@ -109,7 +101,7 @@ class _secondairAverageState extends State<secondairAverage> {
                           //( )
                           Center(
                             child: Text(
-                                'هو المعدل الأدنى الذي يجب أن تتحصل عليه في شهادة التعليم المتوسط لظمان الإنتقال إلى السنة أولى ثانوي',
+                                'هو المعدل الأدنى الذي يجب أن تتحصل عليه في شهادة التعليم المتوسط لضمان الإنتقال إلى السنة أولى ثانوي',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontFamily: 'Kufi',

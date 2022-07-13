@@ -8,7 +8,7 @@ class timeRemaining extends StatefulWidget {
 }
 
 class _timeRemainingState extends State<timeRemaining> {
-  int estimateTs = DateTime(2022, 06, 06, 00, 00, 00).millisecondsSinceEpoch;
+  int estimateTs = DateTime(2023, 06, 06, 00, 00, 00).millisecondsSinceEpoch;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,7 +52,7 @@ class _timeRemainingState extends State<timeRemaining> {
                           Column(
                             children: [
                               Text(
-                                  ' 2022 الـوقـت المـتـبـقـي لــشـهــادة التعليم المتوسط  ',
+                                  ' 2023 الـوقـت المـتـبـقـي لــشـهــادة التعليم المتوسط  ',
                                   style: new TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0,

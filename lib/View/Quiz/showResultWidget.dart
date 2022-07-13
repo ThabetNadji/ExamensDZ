@@ -5,7 +5,7 @@ import 'package:myEduApp/Services/courseNameConvertisor.dart';
 import 'package:myEduApp/Services/quizServices.dart';
 import 'package:myEduApp/View/Quiz/resultWidget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../ad_helper/ad_helper.dart';
+
 import 'getNote.dart';
 import 'userGlobal.dart' as userGlobal;
 
@@ -27,12 +27,10 @@ class _showResultWidgetState extends State<showResultWidget> {
   @override
   void initState() {
     // TODO: implement initState
-    AdHelper.disposeAd();
-    AdHelper.myBanner.load();
+
     super.initState();
   }
 
-  AdWidget adWidget = AdWidget(ad: AdHelper.myBanner);
   // and set ads
   @override
   Widget build(BuildContext context) {
@@ -80,11 +78,6 @@ class _showResultWidgetState extends State<showResultWidget> {
               //color: Colors.orange,
               fontFamily: 'Kufi',
             )),
-      ),
-      bottomNavigationBar: Container(
-        height: 50,
-        color: Colors.black38,
-        child: adWidget,
       ),
       body: SingleChildScrollView(
           child: Stack(

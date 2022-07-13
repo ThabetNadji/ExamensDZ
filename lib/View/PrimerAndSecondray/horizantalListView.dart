@@ -116,7 +116,7 @@ class horizantalListView extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'Kufi',
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.03,
+                                  MediaQuery.of(context).size.width * 0.02,
                               fontWeight: FontWeight.bold,
                               color: Colors.green))),
                 ),
