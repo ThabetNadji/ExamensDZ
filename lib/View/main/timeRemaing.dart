@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
 
-class timeRemaining extends StatefulWidget {
+class timeRemaing extends StatefulWidget {
   @override
-  _timeRemainingState createState() => _timeRemainingState();
+  _timeRemaingState createState() => _timeRemaingState();
 }
 
-class _timeRemainingState extends State<timeRemaining> {
+class _timeRemaingState extends State<timeRemaing> {
   int estimateTs = DateTime(2023, 06, 06, 00, 00, 00).millisecondsSinceEpoch;
   @override
   Widget build(BuildContext context) {
@@ -45,21 +45,48 @@ class _timeRemainingState extends State<timeRemaining> {
                     }
                     //print(dateString);
                     return Container(
-                      color: Colors.greenAccent.withOpacity(0.3),
+                      //color: Colors.yellow,
+                      decoration: new BoxDecoration(
+                        borderRadius:
+                            new BorderRadius.all(new Radius.circular(10.0)),
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/4.png"),
+                          fit: BoxFit.cover,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.orange,
+                            //.withOpacity(0.5),
+                            spreadRadius: 0,
+                            blurRadius: 0,
+                            offset: Offset(0, 0), // changes position of shadow
+                          ),
+                        ],
+                      ),
                       alignment: Alignment.center,
                       child: Column(
                         children: [
                           Column(
                             children: [
-                              Text(
-                                  ' 2023 الـوقـت المـتـبـقـي لــشـهــادة التعليم المتوسط  ',
+                              Text(' ',
                                   style: new TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width / 30,
-                                    color: Colors.orange,
+                                    fontSize: 10.0,
+                                    //color: Colors.orange,
                                     fontFamily: 'Kufi',
-                                  ))
+                                  )),
+                              Center(
+                                child: Text(
+                                    ' 2023 الـوقـت المـتـبـقـي لــشـهــادة التعليم المتوسط  ',
+                                    style: new TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width /
+                                              28,
+                                      color: Color.fromARGB(220, 4, 250, 12),
+                                      fontFamily: 'Kufi',
+                                    )),
+                              )
                             ],
                           ),
                           Column(
@@ -77,7 +104,7 @@ class _timeRemainingState extends State<timeRemaining> {
                                       Text('  يـــــوم  ',
                                           style: new TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 10.0,
+                                            fontSize: 14.0,
                                             //color: Colors.orange,
                                             fontFamily: 'Kufi',
                                           ))
@@ -90,13 +117,13 @@ class _timeRemainingState extends State<timeRemaining> {
                                         .center, //Center Row contents vertically,
                                     children: [
                                       Text(
-                                          '- الوقت بالأيام :     ' +
-                                              '             ' +
+                                          '- الوقت بالأيام :  ' +
+                                              '' +
                                               day.toInt().toString(),
                                           textDirection: ui.TextDirection.rtl,
                                           style: new TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 10.0,
+                                            fontSize: 14.0,
                                             //color: Colors.orange,
                                             fontFamily: 'Kufi',
                                           ))
@@ -112,10 +139,10 @@ class _timeRemainingState extends State<timeRemaining> {
                                 children: [
                                   Row(
                                     children: [
-                                      Text('ســــــاعــة',
+                                      Text('  ســــــاعــة  ',
                                           style: new TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 10.0,
+                                            fontSize: 14.0,
                                             //color: Colors.orange,
                                             fontFamily: 'Kufi',
                                           ))
@@ -123,12 +150,11 @@ class _timeRemainingState extends State<timeRemaining> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
-                                          '- الوقت بالساعات :    ' + dateString,
+                                      Text('- الوقت بالساعات :  ' + dateString,
                                           textDirection: ui.TextDirection.rtl,
                                           style: new TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 10.0,
+                                            fontSize: 14.0,
                                             //color: Colors.orange,
                                             fontFamily: 'Kufi',
                                           ))
@@ -137,6 +163,13 @@ class _timeRemainingState extends State<timeRemaining> {
                                 ],
                               ),
                               Text('بالتـــوفـيق لكــل مجـتهــد ',
+                                  style: new TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12.0,
+                                    color: Color.fromARGB(255, 3, 255, 11),
+                                    fontFamily: 'Kufi',
+                                  )),
+                              Text('',
                                   style: new TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0,

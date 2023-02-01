@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import '../PDFreader/Viewpdf.dart';
-import '../ad_helper/interstitialAds.dart';
 
 // ignore: must_be_immutable
 class CourseContentButton extends StatelessWidget {
   Viewpdf viewpdf;
   String titleBtn, yearX;
-  interstitlaAds _interstitlaAds = interstitlaAds();
+  //interstitlaAds _interstitlaAds = interstitlaAds();
   String fullPath;
   CourseContentButton(this.viewpdf, this.titleBtn, this.yearX, this.fullPath);
   @override
   Widget build(BuildContext context) {
-    String b;
-    String c;
-    String d;
-    String e;
-    String link, f;
+    String b, c, d, e, link, f, annee;
     bool withCorrection = false;
-    String annee;
+
     if (fullPath != '') {
       f = fullPath.split("/")[5];
 
@@ -43,7 +38,8 @@ class CourseContentButton extends StatelessWidget {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 22, 133, 66),
+            //primary: Color.fromARGB(255, 22, 133, 66),
+            primary: Colors.green[900],
             onPrimary: const Color(0xFF63d471),
           ),
           onPressed: () {
@@ -115,8 +111,7 @@ class CourseContentButton extends StatelessWidget {
                                   TextSpan(
                                       text: ' ا ',
                                       style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 22, 133, 66),
+                                          color: Colors.green[900],
                                           fontSize: MediaQuery.of(context)
                                                   .size
                                                   .height *

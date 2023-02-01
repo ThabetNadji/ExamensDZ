@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../PDFreader/Viewpdf.dart';
-import '../ad_helper/interstitialAds.dart';
 
 // ignore: must_be_immutable
 class CourseContentButtonMore extends StatelessWidget {
   Viewpdf viewpdf;
   String titleBtn;
-  interstitlaAds _interstitlaAds = interstitlaAds();
+
   CourseContentButtonMore(this.viewpdf, this.titleBtn);
 
   @override
@@ -23,7 +21,8 @@ class CourseContentButtonMore extends StatelessWidget {
     return Column(children: [
       ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 22, 133, 66),
+          //primary: Color.fromARGB(255, 22, 133, 66),
+          primary: Colors.green[900],
           onPrimary: const Color(0xFF63d471),
         ),
         onPressed: () {

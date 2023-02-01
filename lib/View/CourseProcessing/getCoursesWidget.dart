@@ -194,6 +194,7 @@ class GetCoursesWidget {
                       },
                       children: _itemsExamens.map((MyItem item) {
                         return new ExpansionPanel(
+                            //backgroundColor: Colors.black,
                             headerBuilder:
                                 (BuildContext context, bool isExpanded) {
                               print('inside the ExpansionPanelList ');

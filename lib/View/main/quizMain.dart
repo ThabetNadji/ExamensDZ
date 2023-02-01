@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myEduApp/View/Quiz/LoggedInPage.dart';
-import 'package:myEduApp/View/Quiz/test.dart';
-import 'userGlobal.dart' as userGlobal;
+import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class quizMain extends StatefulWidget {
   String image, textDetail, textButton, year, level;
 
@@ -13,26 +12,20 @@ class quizMain extends StatefulWidget {
 
 // ignore: camel_case_types
 class _quizMainWidgetState extends State<quizMain> {
+  //interstitialADS2 _interstitlaAds2 = interstitialADS2();
+
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.28, //165, //235,
+        height: MediaQuery.of(context).size.height * 0.30, //165, //235,
         width: MediaQuery.of(context).size.width * 0.9, //310,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            alignment: Alignment.centerLeft,
-            image: AssetImage(
-              widget.image,
-            ),
-            //fit: BoxFit.none,
-          ),
-          gradient: LinearGradient(
-            colors: [Color(0x0028313B), Color(0x002C3E50)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-          borderRadius: BorderRadius.circular(10), //border corner radius
+          color: Color.fromARGB(199, 0, 0, 0),
+          border: Border.all(width: 2, color: Color.fromARGB(179, 37, 37, 37)),
+          borderRadius: BorderRadius.circular(7),
+
+          //border corner radius
         ),
         child: Column(
           children: <Widget>[
@@ -41,16 +34,30 @@ class _quizMainWidgetState extends State<quizMain> {
               child: Container(
                 // color: Colors.white,
                 // ignore: deprecated_member_use
-                child: Text(widget.textDetail,
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height * 0.02,
-                        fontFamily: 'Kufi',
-                        fontWeight: FontWeight.bold)),
+                child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 7.0,
+                      right: 7.0,
+                    ),
+                    child: Text(widget.textDetail,
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
+                            fontFamily: 'Kufi',
+                            fontWeight: FontWeight.bold))),
               ),
             ),
-            Spacer(),
+            //Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, top: 30, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(widget.image),
+                ],
+              ),
+            ),
             Align(
                 alignment: Alignment.bottomRight,
                 child: Row(
@@ -58,38 +65,15 @@ class _quizMainWidgetState extends State<quizMain> {
                     Spacer(),
                     Column(
                       children: [
-                        SizedBox(
-                          height: 51,
-                        ),
                         InkWell(
-                          onTap: () {
-                            if (userGlobal.getUserInfo().getUserID() != null) {
-                              print('userGlobal.getUserInfo() not null');
-                              // print(userGlobal.getUserInfo().getUserID() +
-                              //   '  ' +
-                              // userGlobal.getUserInfo().getUserName());
-                              LoggedInPage logedInPage =
-                                  new LoggedInPage(userGlobal.getUserInfo());
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          logedInPage));
-                            } else {
-                              // go to singin page
-                              test t = new test();
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) => t));
-                            }
-                          },
+                          onTap: () => launch(
+                              'https://play.google.com/store/apps/details?id=com.examens.quiz_game_dz'),
                           child: Ink(
                             child: RichText(
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                      text: ' QuizGame',
+                                      text: ' Bem Quiz Dz',
                                       style: TextStyle(
                                           color: Colors.green,
                                           fontSize: MediaQuery.of(context)

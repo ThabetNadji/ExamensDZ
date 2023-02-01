@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:myEduApp/View/main/devicesType.dart';
 import 'package:myEduApp/View/main/theme.dart';
 import 'package:provider/provider.dart';

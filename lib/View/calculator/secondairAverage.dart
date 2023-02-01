@@ -1,9 +1,8 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:myEduApp/Services/averageCalculator.dart';
 
+import 'package:myEduApp/Services/averageCalculator.dart';
 import '../ad_helper/interstitialAds.dart';
 
 class secondairAverage extends StatefulWidget {
@@ -17,7 +16,6 @@ class _secondairAverageState extends State<secondairAverage> {
   @override
   void initState() {
     BackButtonInterceptor.add(myInterceptor);
-
     super.initState();
   }
 
@@ -30,7 +28,7 @@ class _secondairAverageState extends State<secondairAverage> {
   bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
     info.currentRoute(context);
     print("BACK BUTTON1"); // Do some stuff.
-    Navigator.pop(context);
+    Navigator.pop(context); // go back action
     try {
       _interstitlaAds.interstitialAd.show();
     } catch (ex) {
@@ -392,7 +390,7 @@ class _secondairAverageState extends State<secondairAverage> {
                                                                   .size
                                                                   .height *
                                                               0.020,
-                                                          color: Colors.green,
+                                                          color: Colors.orange,
                                                           fontFamily: 'Kufi',
                                                         )),
                                                     Text(
@@ -401,7 +399,7 @@ class _secondairAverageState extends State<secondairAverage> {
                                                                 .elementAt(1)
                                                                 .toStringAsFixed(
                                                                     2) +
-                                                            ' في شهادة التعليم المتوسط لتظمن النجاح الى السنة أولى ثانوي ',
+                                                            ' في شهادة التعليم المتوسط لتضمن النجاح الى السنة أولى ثانوي ',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: new TextStyle(
@@ -411,7 +409,7 @@ class _secondairAverageState extends State<secondairAverage> {
                                                                       context)
                                                                   .size
                                                                   .height *
-                                                              0.018,
+                                                              0.012,
                                                           color: Colors.green,
                                                           fontFamily: 'Kufi',
                                                         ))
@@ -437,7 +435,7 @@ class _secondairAverageState extends State<secondairAverage> {
                                                           fontFamily: 'Kufi',
                                                         )),
                                                     Text(
-                                                        'معدلك العام أقل من 10  يكفي أن تتحصل على معدل 10/20 في شهادة التعليم المتوسط لتظمن النجاح الى السنة أولى ثانوي ',
+                                                        'معدلك العام أقل من 10  يكفي أن تتحصل على معدل 10/20 في شهادة التعليم المتوسط لتضمن النجاح الى السنة أولى ثانوي ',
                                                         style: new TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold,

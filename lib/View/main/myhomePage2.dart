@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myEduApp/View/Quiz/quizMain.dart';
+import 'package:myEduApp/View/main/quizMain.dart';
 import 'package:myEduApp/View/main/timeRemaing.dart';
 import '../PrimerAndSecondray/horizantalListView.dart';
 import 'cardHomeWidgetDark.dart';
-import 'contactUs.dart';
 
 class HomePage2 extends StatefulWidget {
   const HomePage2({Key key}) : super(key: key);
@@ -22,7 +21,7 @@ class _HomePage2State extends State<HomePage2> {
             SizedBox(
               height: 10, //Use of SizedBox
             ),
-            timeRemaining(),
+            timeRemaing(),
             SizedBox(
               height: 10, //Use of SizedBox
             ),
@@ -58,13 +57,11 @@ class _HomePage2State extends State<HomePage2> {
                           height: 2,
                         ),
                         Container(
-                          //height: MediaQuery.of(context).size.height * 0.380, //165, //235,
-                          //width: MediaQuery.of(context).size.width * 0.9, //310
                           child: Column(
                             children: <Widget>[
                               cardHomeWidgetDark(
                                   'assets/images/educ2.png',
-                                  'مواضيع شهادة التعليم المتوسط للسنوات الماضيه مع الحل ',
+                                  ' مواضيع شهادة التعليم المتوسط لسنوات الماضيه مع التصحيح النموذجي ',
                                   'Bem',
                                   'bem',
                                   ''),
@@ -73,13 +70,13 @@ class _HomePage2State extends State<HomePage2> {
                         ),
                         //nativeAds(),
                         Container(
-                          //width: 400,
-                          //height: 673,
+                          //height: 10,
+                          //width: 10,
                           child: Column(
                             children: <Widget>[
                               quizMain(
-                                  'assets/images/quiz.png',
-                                  'حضر لشهادة التعليم المتوسط بطريقة مسلية و ممتعة مع  QuizGame ',
+                                  'assets/images/ic_launcher.png',
+                                  'لتحضير لشهادة التعليم المتوسط بشكل مختلف\nإكتشفوا تطبيقنا الجديد "Bem Quiz Dz" ',
                                   'إبدء'),
                             ],
                           ),

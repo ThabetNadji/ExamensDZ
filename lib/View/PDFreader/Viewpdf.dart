@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:myEduApp/View/PDFreader/quotation.dart';
@@ -29,13 +28,11 @@ class Viewpdf extends StatefulWidget {
 class _ViewpdfState extends State<Viewpdf> {
   BuildContext backContext;
   interstitlaAds _interstitlaAds = interstitlaAds();
+  //interstitialADS2 _interstitlaAds2 = interstitialADS2();
   quotations _quotation = new quotations();
 
   @override
   void initState() {
-    print('-------------------_____________________)))))');
-    print('the context is ');
-    print(context);
     BackButtonInterceptor.add(myInterceptor);
 
     var myViewModel = Provider.of<MyViewModel>(context, listen: false);
@@ -131,7 +128,7 @@ class _ViewpdfState extends State<Viewpdf> {
                     _interstitlaAds.interstitialAd.show();
                   } catch (ex) {
                     print('ops...');
-                    print('something weng wrong, ads faild to load ...?');
+                    print('something weng wrong, ads failed to load ...?');
                   }
                   Navigator.pop(context);
                 },

@@ -20,9 +20,8 @@ class interstitlaAds {
   }
 
   void onAdFailedToLoad(LoadAdError adError) {
-    print('ads faild to load? ...');
-    print('error traces ...');
-    print(adError.code);
+    onAdFailedToLoad:
+    (LoadAdError adError) => interstitialAd = null;
   }
 
   void onAdLoaded(InterstitialAd ad) {
